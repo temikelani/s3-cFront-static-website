@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Deploy a Static Wbsite s3 Bucket as CloudFront origin
+
+Parameters:
+  bucketName:
+    Type: String
+    Default: "static-website-temikelani"
+
+Resources:
+  s3WebsiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref bucketName
+      WebsiteConfiguration:
+        IndexDocument: "index.html"
+        ErrorDocument: "error.html"
+
+  cloudFrontOriginAccessIdentity:
+    Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: !Ref s3WebsiteBucket
+
+  s3WebsiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref s3WebsiteBucket
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: "Allow"
+            Action: s3:GetObject
+            Resource: !Sub "arn:aws:s3:::${bucketName}/*"
+            Principal:
+              CanonicalUser: !GetAtt cloudFrontOriginAccessIdentity.S3CanonicalUserId
+
+  cloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        DefaultRootObject: "index.html"
+        HttpVersion: http2
+        PriceClass: PriceClass_All
+        Origins:
+          - DomainName: !GetAtt s3WebsiteBucket.DomainName
+            Id: s3WebsiteBucket
+            S3OriginConfig:
+              OriginAccessIdentity: !Sub "origin-access-identity/cloudfront/${cloudFrontOriginAccessIdentity}"
+        DefaultCacheBehavior:
+          TargetOriginId: s3WebsiteBucket
+          ViewerProtocolPolicy: allow-all
+          Compress: true
+          ForwardedValues:
+            QueryString: "true"
+
+  # s3Bucket:
+  #   Type: AWS::S3::Bucket
+  #   Properties:
+  #     AccessControl: Private | PublicRead | PublicReacloudfromadWrite | AuthenticatedRead | LogDeliveryWrite | BucketOwnerRead | BucketOwnerFullControl
+
+Outputs:
+  bucketName:
+    Description: "s3 bucket name"
+    Value: !Ref s3WebsiteBucket
+  bucketUrl:
+    Description: "s3 bucket url"
+    Value: !GetAtt s3WebsiteBucket.WebsiteURL
+  DistrubutionId:
+    Description: "cloud front distro id"
+    Value: !Ref cloudFrontDistribution
+  CloudFrontDomain:
+    Description: CloudFront Domain
+    Value: !GetAtt cloudFrontDistribution.DomainName
