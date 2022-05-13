@@ -136,7 +136,8 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
   aws s3 rm s3://$BUCKET_NAME --recursive
   ```
 
-  ```
+  ```bash
+  # delete-stack
   aws cloudformation delete-stack --stack-name $STACK_NAME
   ```
 
