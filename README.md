@@ -45,11 +45,11 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
 # Steps <a id='steps'></a> ([go to top](#top))
 
 - Create a bucket `travel-website-bucket-temikelani`
-- Enable Static Website Hosting on the Bucket
+- Enable `static website hosting` on the Bucket
 - Upload the web files to s3
-- Create a Cloud Front Distribution
-- Make the bucket a Cloud Front Origin Access Identity for that Distribution
-- Create a bucket Policy that grants public read access to the CLoud Front Distriubtion
+- Create a `Cloud Front Distribution`
+- Make the bucket a `Cloud Front Origin Access Identity` for that Distribution
+- Create a `bucket Policy` that `grants public read access` to the `CLoud Front Distriubtion only`
 - Access the website via the cloud front Distrubution
 
 <br>
@@ -59,16 +59,18 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
 # Via CLoud Formation <a id='0'></a> ([go to top](#top))
 
 <details>
-<summary>> CLick to Expand</summary>
+<summary> CLick to Expand</summary>
 
 - Make sure you are in the root directory of this repo `s3-cFront-static-website`
 - Run `aws configure` to set up your CLI
 - Deploy the [CloudFormation template](./cloudformation/template.yaml) to AWS and save the outputs asn env variables
 
   - [`create-stack`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/create-stack.html)
+
   ```
   export STACK_NAME=travel-website
   ```
+
   ```
   aws cloudformation create-stack \
   --stack-name $STACK_NAME \
@@ -104,16 +106,19 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
   ```
 
 - Upload Files to the bucket
+
   - [`cp`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/s3/cp.html)
 
   ```
-  aws s3 cp ./web-files s3://$BUCKET_NAME/ --recursive 
+  aws s3 cp ./web-files s3://$BUCKET_NAME/ --recursive
   ```
 
 - Access the site via the CloudFront Domain Name.
+
   ```
   curl $CDN_DOMAIN
   ```
+
   ```bash
   #on mac
   open "http://$CDN_DOMAIN"
@@ -122,6 +127,7 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
   ```
 
 - Clean Up & Delete All Resources
+
   - [Empty S3 Bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/empty-bucket.html)
   - [`delete-stack`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/delete-stack.html)
 
@@ -129,6 +135,7 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
   #empty s3 bucket
   aws s3 rm s3://$BUCKET_NAME --recursive
   ```
+
   ```
   aws cloudformation delete-stack --stack-name $STACK_NAME
   ```
@@ -142,8 +149,8 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
 # Via Terraform <a id='1'></a> ([go to top](#top))
 
 <details>
-<summary>> CLick to Expand</summary>
-
+<summary> CLick to Expand</summary>
+Coming Soon
 </details>
 
 <br>
@@ -153,8 +160,8 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
 # Via CLI/Bash Script<a id='2'></a> ([go to top](#top))
 
 <details>
-<summary>> CLick to Expand</summary>
-
+<summary> CLick to Expand</summary>
+Coming Soon
 </details>
 
 <br>
@@ -164,8 +171,8 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
 # Via Console <a id='3'></a> ([go to top](#top))
 
 <details>
-<summary>> CLick to Expand</summary>
-
+<summary> CLick to Expand</summary>
+Coming Soon
 </details>
 
 <br>
