@@ -63,7 +63,7 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
 
 - Make sure you are in the root directory of this repo `s3-cFront-static-website`
 - Run `aws configure` to set up your CLI
-- Deploy the [CloudFormation template](./cloudformation/template.yaml) to AWS and save the outputs asn env variables
+- Deploy this [CloudFormation template](./cloudformation/template.yaml) to AWS and save the outputs asn env variables
 
   - [`create-stack`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/create-stack.html)
 
