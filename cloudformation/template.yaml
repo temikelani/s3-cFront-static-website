@@ -4,7 +4,7 @@ Description: Deploy a Static Wbsite s3 Bucket as CloudFront origin
 Parameters:
   bucketName:
     Type: String
-    Default: "static-website-temikelani"
+    Default: "travel-website-bucket-temikelani"
 
 Resources:
   s3WebsiteBucket:
