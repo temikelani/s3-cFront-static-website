@@ -59,7 +59,7 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
 # Via CLoud Formation <a id='0'></a> ([go to top](#top))
 
 <details>
-<summary> CLick for More </summary>
+<summary> Expand to see Details </summary>
 
 - Make sure you are in the root directory of this repo `s3-cFront-static-website`
 - Run `aws configure` to set up your CLI
