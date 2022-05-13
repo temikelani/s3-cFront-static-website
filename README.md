@@ -149,7 +149,7 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
 # Via Terraform <a id='1'></a> ([go to top](#top))
 
 <details>
-<summary> CLick to Expand</summary>
+<summary> Coming Soon </summary>
 Coming Soon
 </details>
 
@@ -160,7 +160,7 @@ Coming Soon
 # Via CLI/Bash Script<a id='2'></a> ([go to top](#top))
 
 <details>
-<summary> CLick to Expand</summary>
+<summary> Coming Soon </summary>
 Coming Soon
 </details>
 
@@ -171,7 +171,7 @@ Coming Soon
 # Via Console <a id='3'></a> ([go to top](#top))
 
 <details>
-<summary> CLick to Expand</summary>
+<summary> Coming Soon </summary>
 Coming Soon
 </details>
 
