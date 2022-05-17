@@ -67,7 +67,7 @@ Host a static website on S3 and accessing the cached website pages using CloudFr
 
 > > > As an alternative to running the commands below - run this [script](./scripts/main.sh)
 
-> > > `./main.sh create | update | delete
+> > > `./main.sh create | update | delete`
 
 - [`create-stack`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/cloudformation/create-stack.html)
 
