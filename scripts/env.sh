@@ -12,4 +12,3 @@ export BUCKET_URL=$(aws cloudformation describe-stacks --stack-name $STACK_NAME 
 
 export CDN_DOMAIN=$(aws cloudformation describe-stacks --stack-name $STACK_NAME --query "Stacks[*].Outputs[3].OutputValue" --output text)
 
-aws s3 cp ../web-files s3://$BUCKET
