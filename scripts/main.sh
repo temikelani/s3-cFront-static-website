@@ -16,12 +16,17 @@ case $COMMAND in
     aws cloudformation create-stack \
     --stack-name $2 \
     --template-body file://$TEMPLATE
+
+    # Add environment variables
+    ./env.sh
     ;;
 
   update)
     aws cloudformation update-stack \
     --stack-name $2\
     --template-body file://$TEMPLATE
+
+
     ;;
 
   delete)
@@ -29,5 +34,3 @@ case $COMMAND in
     --stack-name $2
     ;;
 
-# Add environment variables
-./env.sh
